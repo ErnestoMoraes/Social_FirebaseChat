@@ -4,24 +4,25 @@ import 'package:projeto_chat_firebase/app/components/textfiled_component.dart';
 import 'package:projeto_chat_firebase/app/core/ui/helpers/size_extencion.dart';
 import 'package:projeto_chat_firebase/app/core/ui/styles/colors_app.dart';
 
-class LoginPage extends StatefulWidget {
+class RegisterPage extends StatefulWidget {
   final Function()? onPressed;
-  const LoginPage({super.key, required this.onPressed});
+  const RegisterPage({super.key, required this.onPressed});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _RegisterPageState extends State<RegisterPage> {
   final emailEC = TextEditingController();
   final passwordEC = TextEditingController();
+  final confirmPasswordEC = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: context.colorsApp.backgroundd,
-      body: SingleChildScrollView(
-        child: SafeArea(
+      body: SafeArea(
+        child: SingleChildScrollView(
           child: Center(
             child: Padding(
               padding:
@@ -37,7 +38,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   SizedBox(height: context.percentHeight(.05)),
                   const Text(
-                      'Bem vindo ao Social Firebase, senti falta de você!'),
+                      'Crei sua conta no Social Firebase, e faça novos amigos!'),
                   SizedBox(height: context.percentHeight(.03)),
                   TextfiledComponent(
                     hitnText: 'Email',
@@ -50,6 +51,12 @@ class _LoginPageState extends State<LoginPage> {
                     obscureText: true,
                     controllerEC: passwordEC,
                   ),
+                  SizedBox(height: context.percentHeight(.02)),
+                  TextfiledComponent(
+                    hitnText: 'Confirme a senha',
+                    obscureText: true,
+                    controllerEC: confirmPasswordEC,
+                  ),
                   SizedBox(height: context.percentHeight(.05)),
                   ButtonComponent(
                     onPressed: () {},
@@ -61,9 +68,11 @@ class _LoginPageState extends State<LoginPage> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: const [
-                        Text('Não tem uma conta?'),
                         Text(
-                          'Cadastre-se',
+                          'Já tem uma conta?',
+                        ),
+                        Text(
+                          'Logar-se',
                           style: TextStyle(
                             color: Colors.blue,
                             fontWeight: FontWeight.bold,
