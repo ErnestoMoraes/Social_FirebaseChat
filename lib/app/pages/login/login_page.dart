@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:projeto_chat_firebase/app/components/button_component.dart';
 import 'package:projeto_chat_firebase/app/components/textfiled_component.dart';
@@ -15,6 +16,44 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final emailEC = TextEditingController();
   final passwordEC = TextEditingController();
+
+  @override
+  void dispose() {
+    emailEC.dispose();
+    passwordEC.dispose();
+    super.dispose();
+  }
+
+  void login() async {
+    showDialog(
+      context: context,
+      builder: (context) => const Center(
+        child: CircularProgressIndicator(),
+      ),
+    );
+
+    try {
+      await Future.delayed(const Duration(seconds: 2));
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailEC.text,
+        password: passwordEC.text,
+      );
+      if (context.mounted) {
+        Navigator.pop(context);
+      }
+    } on FirebaseAuthException catch (e) {
+      Navigator.pop(context);
+      displayDialog(e.code);
+    }
+  }
+
+  void displayDialog(String title) => showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text(title, style: const TextStyle(color: Colors.white)),
+          backgroundColor: Colors.redAccent,
+        ),
+      );
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +91,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   SizedBox(height: context.percentHeight(.05)),
                   ButtonComponent(
-                    onPressed: () {},
+                    onPressed: login,
                     text: 'Entrar',
                   ),
                   SizedBox(height: context.percentHeight(.03)),

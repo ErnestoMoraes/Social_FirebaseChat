@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:projeto_chat_firebase/app/components/button_component.dart';
 import 'package:projeto_chat_firebase/app/components/textfiled_component.dart';
@@ -16,6 +17,51 @@ class _RegisterPageState extends State<RegisterPage> {
   final emailEC = TextEditingController();
   final passwordEC = TextEditingController();
   final confirmPasswordEC = TextEditingController();
+
+  @override
+  void dispose() {
+    emailEC.dispose();
+    passwordEC.dispose();
+    confirmPasswordEC.dispose();
+    super.dispose();
+  }
+
+  void create() async {
+    showDialog(
+      context: context,
+      builder: (context) => const Center(
+        child: CircularProgressIndicator(),
+      ),
+    );
+
+    if (passwordEC.text != confirmPasswordEC.text) {
+      Navigator.pop(context);
+      displayDialog('Senhas não conferem');
+      return;
+    }
+
+    try {
+      await Future.delayed(const Duration(seconds: 2));
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: emailEC.text,
+        password: passwordEC.text,
+      );
+      if (context.mounted) {
+        Navigator.pop(context);
+      }
+    } on FirebaseAuthException catch (e) {
+      Navigator.pop(context);
+      displayDialog(e.code);
+    }
+  }
+
+  void displayDialog(String title) => showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text(title, style: const TextStyle(color: Colors.white)),
+          backgroundColor: Colors.redAccent,
+        ),
+      );
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +105,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                   SizedBox(height: context.percentHeight(.05)),
                   ButtonComponent(
-                    onPressed: () {},
+                    onPressed: create,
                     text: 'Entrar',
                   ),
                   SizedBox(height: context.percentHeight(.03)),

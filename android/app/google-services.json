@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "199669285669",
+    "project_id": "social-firebase-tutorial",
+    "storage_bucket": "social-firebase-tutorial.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:199669285669:android:4a2c7286738158835750cc",
+        "android_client_info": {
+          "package_name": "br.com.ernestomoraes.projeto_chat_firebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "199669285669-boi0nbcfgtn7uui2f8kq363j75djt8k6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzuFWtfOm6vpb49cioXzCjVSK4eEAbgQs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "199669285669-boi0nbcfgtn7uui2f8kq363j75djt8k6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
