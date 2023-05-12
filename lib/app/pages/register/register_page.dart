@@ -46,7 +46,7 @@ class _RegisterPageState extends State<RegisterPage> {
         email: emailEC.text,
         password: passwordEC.text,
       );
-      if (context.mounted) {
+      if (context.mounted) { 
         Navigator.pop(context);
       }
     } on FirebaseAuthException catch (e) {

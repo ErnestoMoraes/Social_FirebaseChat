@@ -1,8 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="br.com.ernestomoraes.projeto_chat_firebase">
    <application
+        android:name="androidx.multidex.MultiDexApplication"
         android:label="projeto_chat_firebase"
-        android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

@@ -28,8 +28,8 @@ class TextfiledComponent extends StatelessWidget {
         fillColor: Colors.white,
         filled: true,
         hintStyle: TextStyle(
-          color: Colors.grey[500]!,
-          fontWeight: FontWeight.bold,
+          color: Colors.grey[700]!,
+          fontWeight: FontWeight.w500
         ),
       ),
     );
