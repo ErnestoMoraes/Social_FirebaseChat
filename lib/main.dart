@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:projeto_chat_firebase/app/core/auth/auth/auth.dart';
 import 'package:projeto_chat_firebase/firebase_options.dart';
 
@@ -18,8 +19,11 @@ class MyApp extends StatelessWidget {
       title: 'Social Firebase',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+          primarySwatch: Colors.blue,
+          textTheme: GoogleFonts.robotoSlabTextTheme(
+            ThemeData.dark().textTheme,
+          ),
+          hintColor: Colors.amber),
       initialRoute: '/',
       routes: {
         '/': (context) => const Auth(),

@@ -46,7 +46,7 @@ class _RegisterPageState extends State<RegisterPage> {
         email: emailEC.text,
         password: passwordEC.text,
       );
-      if (context.mounted) { 
+      if (context.mounted) {
         Navigator.pop(context);
       }
     } on FirebaseAuthException catch (e) {
@@ -65,72 +65,84 @@ class _RegisterPageState extends State<RegisterPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: context.colorsApp.backgroundd,
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Center(
-            child: Padding(
-              padding:
-                  EdgeInsets.symmetric(horizontal: context.percentWidth(.1)),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(height: context.percentHeight(.1)),
-                  Icon(
-                    Icons.lock,
-                    size: context.screenHeight * .1,
-                    color: Colors.black,
-                  ),
-                  SizedBox(height: context.percentHeight(.05)),
-                  const Text(
-                      'Crei sua conta no Social Firebase, e faça novos amigos!'),
-                  SizedBox(height: context.percentHeight(.03)),
-                  TextfiledComponent(
-                    hitnText: 'Email',
-                    obscureText: false,
-                    controllerEC: emailEC,
-                  ),
-                  SizedBox(height: context.percentHeight(.02)),
-                  TextfiledComponent(
-                    hitnText: 'Senha',
-                    obscureText: true,
-                    controllerEC: passwordEC,
-                  ),
-                  SizedBox(height: context.percentHeight(.02)),
-                  TextfiledComponent(
-                    hitnText: 'Confirme a senha',
-                    obscureText: true,
-                    controllerEC: confirmPasswordEC,
-                  ),
-                  SizedBox(height: context.percentHeight(.05)),
-                  ButtonComponent(
-                    onPressed: create,
-                    text: 'Entrar',
-                  ),
-                  SizedBox(height: context.percentHeight(.03)),
-                  GestureDetector(
-                    onTap: widget.onPressed,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Text(
-                          'Já tem uma conta?',
-                        ),
-                        Text(
-                          'Logar-se',
-                          style: TextStyle(
-                            color: Colors.blue,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).unfocus(),
+      child: Scaffold(
+        backgroundColor: context.colorsApp.backgroundd,
+        body: SafeArea(
+          child: SingleChildScrollView(
+            child: Center(
+              child: Padding(
+                padding:
+                    EdgeInsets.symmetric(horizontal: context.percentWidth(.1)),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(height: context.percentHeight(.15)),
+                    Icon(
+                      Icons.lock,
+                      size: context.screenHeight * .1,
+                      color: Colors.black,
                     ),
-                  ),
-                  SizedBox(
-                    height: context.percentHeight(.02),
-                  ),
-                ],
+                    SizedBox(height: context.percentHeight(.05)),
+                    const Text(
+                      'Criar conta no Social Firebase',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 18,
+                      ),
+                    ),
+                    SizedBox(height: context.percentHeight(.03)),
+                    TextfiledComponent(
+                      hitnText: 'Email',
+                      obscureText: false,
+                      controllerEC: emailEC,
+                      color: Colors.black,
+                    ),
+                    SizedBox(height: context.percentHeight(.02)),
+                    TextfiledComponent(
+                      hitnText: 'Senha',
+                      obscureText: true,
+                      controllerEC: passwordEC,
+                    ),
+                    SizedBox(height: context.percentHeight(.02)),
+                    TextfiledComponent(
+                      hitnText: 'Confirme a senha',
+                      obscureText: true,
+                      controllerEC: confirmPasswordEC,
+                      color: Colors.black,
+                    ),
+                    SizedBox(height: context.percentHeight(.05)),
+                    ButtonComponent(
+                      onPressed: create,
+                      text: 'Entrar',
+                    ),
+                    SizedBox(height: context.percentHeight(.03)),
+                    GestureDetector(
+                      onTap: widget.onPressed,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: const [
+                          Text(
+                            'Já tem uma conta? ',
+                            style: TextStyle(color: Colors.black),
+                          ),
+                          Text(
+                            'Logar-se',
+                            style: TextStyle(
+                              color: Colors.blue,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: context.percentHeight(.02),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

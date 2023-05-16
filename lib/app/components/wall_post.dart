@@ -25,6 +25,8 @@ class WallPost extends StatefulWidget {
 class _WallPostState extends State<WallPost> {
   final current = FirebaseAuth.instance.currentUser;
   bool isLiked = false;
+  final dia = DateTime.now().toString().substring(0, 10);
+  final hora = DateTime.now().toString().substring(11, 16);
 
   @override
   void initState() {
@@ -53,9 +55,13 @@ class _WallPostState extends State<WallPost> {
 
   @override
   Widget build(BuildContext context) {
+    print(
+        'current: ${current!.email.toString().split('@')[0]} - user: ${widget.user}');
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: current!.email.toString().split('@')[0] == widget.user
+            ? Colors.black
+            : Colors.white,
         borderRadius: BorderRadius.circular(8),
       ),
       margin: EdgeInsets.only(
@@ -74,9 +80,9 @@ class _WallPostState extends State<WallPost> {
               Text(
                 widget.likes.length.toString(),
                 style: TextStyle(
-                  fontSize: 15,
-                  color: Colors.grey[900],
-                  fontWeight: FontWeight.bold,
+                  color: current!.email.toString().split('@')[0] == widget.user
+                      ? Colors.white
+                      : Colors.black54,
                 ),
               ),
             ],
@@ -85,21 +91,41 @@ class _WallPostState extends State<WallPost> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  widget.user,
-                  style: TextStyle(
-                    fontSize: context.screenWidth * .045,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.grey[500],
-                  ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      widget.user,
+                      style: TextStyle(
+                        fontSize: context.screenWidth * .047,
+                        color: current!.email.toString().split('@')[0] ==
+                                widget.user
+                            ? Colors.white
+                            : Colors.black54,
+                      ),
+                    ),
+                    const SizedBox(width: 10),
+                    Text(
+                      hora,
+                      style: TextStyle(
+                        fontSize: context.screenWidth * .035,
+                        color: current!.email.toString().split('@')[0] ==
+                                widget.user
+                            ? Colors.white
+                            : Colors.black54,
+                      ),
+                    ),
+                  ],
                 ),
-                SizedBox(height: context.percentHeight(.01)),
+                SizedBox(height: context.screenWidth * .01),
                 Text(
                   widget.message,
                   style: TextStyle(
                     fontSize: context.screenWidth * .045,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.grey[700],
+                    color:
+                        current!.email.toString().split('@')[0] == widget.user
+                            ? Colors.white
+                            : Colors.black54,
                   ),
                 ),
               ],
