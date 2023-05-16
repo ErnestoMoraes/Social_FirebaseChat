@@ -31,6 +31,7 @@ class _HomePageState extends State<HomePage> {
       'UserEmail': curentUser!.email,
       'Message': textEC.text,
       'TimeStamp': Timestamp.now(),
+      'Likes': [],
     });
 
     setState(() {
@@ -68,9 +69,13 @@ class _HomePageState extends State<HomePage> {
                         itemCount: snapshot.data!.docs.length,
                         itemBuilder: (context, index) {
                           final post = snapshot.data!.docs[index];
+                          final usuario =
+                              post['UserEmail'].toString().split('@gmail.com');
                           return WallPost(
-                            user: post['UserEmail'],
+                            user: usuario[0],
                             message: post['Message'],
+                            postId: post.id,
+                            likes: List<String>.from(post['Likes'] ?? []),
                           );
                         },
                       );
