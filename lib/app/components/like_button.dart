@@ -4,9 +4,9 @@ import 'package:projeto_chat_firebase/app/core/ui/helpers/size_extencion.dart';
 
 class LikeButton extends StatelessWidget {
   final bool isLiked;
-  void Function() onTap;
+  final void Function() onTap;
 
-  LikeButton({
+  const LikeButton({
     Key? key,
     required this.isLiked,
     required this.onTap,
@@ -15,7 +15,10 @@ class LikeButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(right: context.percentWidth(.03)),
+      margin: EdgeInsets.only(
+        left: context.percentWidth(.02),
+        right: context.percentWidth(.02),
+      ),
       child: GestureDetector(
         onTap: onTap,
         child: Icon(

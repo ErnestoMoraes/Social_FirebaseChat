@@ -65,6 +65,7 @@ class _WallPostState extends State<WallPost> {
       ),
       padding: EdgeInsets.all(context.percentWidth(.04)),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Column(
             children: [
