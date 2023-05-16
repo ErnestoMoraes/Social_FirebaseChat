@@ -36,7 +36,7 @@ class TextfiledComponent extends StatelessWidget {
           borderSide: BorderSide(color: Colors.transparent),
         ),
         focusedBorder: const OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.blueAccent),
+          borderSide: BorderSide(color: Colors.transparent),
         ),
         fillColor: color == Colors.black ? Colors.black : Colors.white,
         filled: true,
