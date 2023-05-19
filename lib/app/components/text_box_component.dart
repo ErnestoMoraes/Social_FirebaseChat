@@ -16,7 +16,7 @@ class TextBoxComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.grey[200],
+        color: Colors.black,
         borderRadius: BorderRadius.circular(5),
       ),
       padding: const EdgeInsets.only(left: 20, right: 20, bottom: 15),
@@ -29,26 +29,26 @@ class TextBoxComponent extends StatelessWidget {
             children: [
               Text(
                 sectionName,
-                style: TextStyle(
-              fontSize: 15,
-              color: Colors.grey[600],
-              fontWeight: FontWeight.bold,
-            ),
+                style: const TextStyle(
+                  fontSize: 15,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               IconButton(
                 onPressed: onPressed,
-                icon: Icon(
+                icon: const Icon(
                   Icons.settings,
-                  color: Colors.grey[600],
+                  color: Colors.white,
                 ),
               ),
             ],
           ),
           Text(
             text,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 15,
-              color: Colors.grey[600],
+              color: Colors.white,
               fontWeight: FontWeight.bold,
             ),
           ),

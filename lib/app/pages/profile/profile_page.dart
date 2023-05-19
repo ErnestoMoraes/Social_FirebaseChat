@@ -62,7 +62,7 @@ class _ProfilePageState extends State<ProfilePage> {
       ),
     );
 
-    if (newValue.trim().isNotEmpty && newValue != field  ) {
+    if (newValue.trim().isNotEmpty && newValue != field) {
       await usersCollection.doc(current.email).update({
         field: newValue,
       });
@@ -97,12 +97,12 @@ class _ProfilePageState extends State<ProfilePage> {
                   style: TextStyle(color: Colors.grey[800]),
                 ),
                 const SizedBox(height: 50),
-                Padding(
-                  padding: const EdgeInsets.only(left: 25),
+                const Padding(
+                  padding: EdgeInsets.only(left: 25),
                   child: Text(
                     'My Deatils',
                     style: TextStyle(
-                      color: Colors.grey[600],
+                      color: Colors.black,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -118,12 +118,12 @@ class _ProfilePageState extends State<ProfilePage> {
                   onPressed: () => editField('bio'),
                 ),
                 const SizedBox(height: 30),
-                Padding(
-                  padding: const EdgeInsets.only(left: 25),
+                const Padding(
+                  padding: EdgeInsets.only(left: 25),
                   child: Text(
                     'My Posts',
                     style: TextStyle(
-                      color: Colors.grey[600],
+                      color: Colors.black,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
