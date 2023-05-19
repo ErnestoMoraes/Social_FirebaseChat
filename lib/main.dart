@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:projeto_chat_firebase/app/core/auth/auth/auth.dart';
+import 'package:projeto_chat_firebase/app/pages/profile/profile_page.dart';
 import 'package:projeto_chat_firebase/firebase_options.dart';
 
 void main() async {
@@ -27,6 +28,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => const Auth(),
+        '/profile': (context) => const ProfilePage(),
       },
     );
   }

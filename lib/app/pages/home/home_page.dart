@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:projeto_chat_firebase/app/components/drawer_component.dart';
 import 'package:projeto_chat_firebase/app/components/textfiled_component.dart';
 import 'package:projeto_chat_firebase/app/components/wall_post.dart';
 import 'package:projeto_chat_firebase/app/core/ui/helpers/size_extencion.dart';
@@ -39,12 +40,23 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  void goToProfilePage() {
+    Navigator.pop(context);
+    Navigator.pushNamed(context, '/profile');
+  }
+
+  void signOut() {}
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
           backgroundColor: context.colorsApp.backgroundd,
+          drawer: DrawerComponent(
+            onProfileTap: goToProfilePage,
+            onSignOutTap: logout,
+          ),
           appBar: AppBar(
             title: const Text(
               'Home Chat',
@@ -55,16 +67,6 @@ class _HomePageState extends State<HomePage> {
             ),
             centerTitle: true,
             backgroundColor: Colors.grey[800],
-            actions: [
-              IconButton(
-                onPressed: logout,
-                icon: const Icon(
-                  Icons.exit_to_app_rounded,
-                  color: Colors.white,
-                  size: 27,
-                ),
-              ),
-            ],
           ),
           body: Center(
             child: Column(
