@@ -89,12 +89,12 @@ class _ProfilePageState extends State<ProfilePage> {
             return ListView(
               children: [
                 const SizedBox(height: 50),
-                const Icon(Icons.person, size: 75),
+                const Icon(Icons.person, size: 75, color: Colors.black),
                 const SizedBox(height: 10),
                 Text(
                   current.email!,
                   textAlign: TextAlign.center,
-                  style: TextStyle(color: Colors.grey[800]),
+                  style: const TextStyle(color: Colors.black, fontSize: 16),
                 ),
                 const SizedBox(height: 50),
                 const Padding(
