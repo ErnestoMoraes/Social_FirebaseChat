@@ -65,6 +65,7 @@ class _HomePageState extends State<HomePage> {
                   color: Colors.white,
                   fontWeight: FontWeight.bold),
             ),
+            
             centerTitle: true,
             backgroundColor: Colors.grey[800],
           ),
